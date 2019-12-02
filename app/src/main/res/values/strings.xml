@@ -14,9 +14,11 @@
     <string name="operation_result">=</string>
 
     <string name="operation_delete">DEL</string>
-    <string name="operation_divide">÷</string>
-    <string name="operation_mul">×</string>
-    <string name="operation_sum">+</string>
-    <string name="operation_sub">-</string>
+    <string name="operation_divide"> ÷ </string>
+    <string name="operation_mul"> × </string>
+    <string name="operation_sum"> + </string>
+    <string name="operation_sub"> - </string>
+    <string name="operator_open_bracket"> ( </string>
+    <string name="operator_close_bracket"> ) </string>
 
 </resources>
