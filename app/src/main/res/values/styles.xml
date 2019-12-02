@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+    </style>
+
+    <style name="Header">
+        <item name="android:gravity">right</item>
+        <item name="android:background">@color/color_gray_light</item>
+    </style>
+
+    <style name="Header.Equation">
+        <item name ="android:textSize">60sp</item>
+        <item name ="android:paddingRight">16dp</item>
+        <item name ="android:paddingTop">48dp</item>
+        <item name ="android:paddingLeft">16dp</item>
+    </style>
+
+    <style name="Header.Answer">
+        <item name = "android:textSize">40sp</item>
+        <item name = "android:paddingRight">16dp</item>
+        <item name = "android:paddingLeft">16dp</item>
+        <item name = "android:paddingTop">16dp</item>
+        <item name = "android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="Numpad">
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Numpad.Numbers">
+        <item name="android:textSize">50sp</item>
+        <item name="android:textColor">@color/color_gray_light</item>
+        <item name="android:background">@drawable/number_button</item>
+    </style>
+
+    <style name="Numpad.Operation">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/color_gray_light</item>
+        <item name="android:background">@drawable/operation_button</item>
+    </style>
+</resources>
