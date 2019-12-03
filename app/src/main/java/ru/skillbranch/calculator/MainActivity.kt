@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }else if(p0?.id==R.id.btn_result) {
             tvAnswer.text = "= ${translateToRPN()}"
-            //tvEquation.text = ""
+            tvEquation.hint = tvEquation.text
+            tvEquation.text = ""
             inputEquation = mutableListOf("")
         }else{
             addToInput((p0 as Button).text.toString())
