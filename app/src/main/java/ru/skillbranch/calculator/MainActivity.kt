@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }else if(p0?.id==btnDeleteChar.id){
             if(inputEquation.last()!="") {
                 tvEquation.text = tvEquation.text.dropLast(1)
-                var str = inputEquation[inputEquation.lastIndex]
+                val str = inputEquation[inputEquation.lastIndex]
                 inputEquation[inputEquation.lastIndex] = str.dropLast(1)
                 if (inputEquation[inputEquation.lastIndex] == "") {
                     inputEquation.removeAt(inputEquation.lastIndex)
