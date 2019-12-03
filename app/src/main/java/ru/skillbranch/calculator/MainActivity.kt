@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         return false
     }
 
-    private fun translateToRPN():Float{
+    private fun translateToRPN():Double{
         val operationStack = mutableListOf<String>()
         val equationInRPN = mutableListOf<String>()
         for(word in inputEquation){
@@ -142,11 +142,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         return calculate(equationInRPN)
     }
 
-    private fun calculate(input:MutableList<String>):Float{
-        val workingStack = mutableListOf<Float>()
+    private fun calculate(input:MutableList<String>):Double{
+        val workingStack = mutableListOf<Double>()
         for(word in input){
             if(word.matches(Regex("([1-9]|[.])+"))){
-                workingStack.add(word.toFloat())
+                workingStack.add(word.toDouble())
             } else if(word=="+"){
                 val a = workingStack[workingStack.lastIndex-1]+workingStack[workingStack.lastIndex]
                 workingStack.removeAt(workingStack.lastIndex)
