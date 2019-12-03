@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if(p0?.id==R.id.btn_operation_delete) {
             tvEquation.text = ""
             inputEquation = mutableListOf("")
+            tvEquation.hint=""
         }else if(p0?.id==btnDeleteChar.id){
             if(inputEquation.last()!="") {
                 tvEquation.text = tvEquation.text.dropLast(1)
@@ -66,10 +67,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }else if(p0?.id==R.id.btn_result) {
-            tvAnswer.text = "= ${translateToRPN()}"
-            tvEquation.hint = tvEquation.text
-            tvEquation.text = ""
-            inputEquation = mutableListOf("")
+            if(inputEquation.last()!="") {
+                tvAnswer.text = "= ${translateToRPN()}"
+                tvEquation.hint = tvEquation.text
+                tvEquation.text = ""
+                inputEquation = mutableListOf("")
+            }
         }else{
             addToInput((p0 as Button).text.toString())
         }
@@ -95,8 +98,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun checkInput(equation:String):Boolean{
-        //TODO return
+    private fun checkInput():Boolean{
         return false
     }
 
@@ -138,36 +140,43 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         for(operation in operationStack){
             equationInRPN.add(operation)
         }
+
         return calculate(equationInRPN)
+
     }
 
     private fun calculate(input:MutableList<String>):Double{
         val workingStack = mutableListOf<Double>()
-        for(word in input){
-            if(word.matches(Regex("([1-9]|[.])+"))){
+        for (word in input) {
+            if (word.matches(Regex("([1-9]|[.])+"))) {
                 workingStack.add(word.toDouble())
-            } else if(word=="+"){
-                val a = workingStack[workingStack.lastIndex-1]+workingStack[workingStack.lastIndex]
+            } else if (word == "+") {
+                val a =
+                    workingStack[workingStack.lastIndex - 1] + workingStack[workingStack.lastIndex]
                 workingStack.removeAt(workingStack.lastIndex)
-                workingStack[workingStack.lastIndex]=a
-            } else if(word=="@"){
-                val a = workingStack[workingStack.lastIndex-1]*workingStack[workingStack.lastIndex]
+                workingStack[workingStack.lastIndex] = a
+            } else if (word == "@") {
+                val a =
+                    workingStack[workingStack.lastIndex - 1] * workingStack[workingStack.lastIndex]
                 workingStack.removeAt(workingStack.lastIndex)
-                workingStack[workingStack.lastIndex]=a
-            } else if(word=="/"){
-                val a = workingStack[workingStack.lastIndex-1]/workingStack[workingStack.lastIndex]
+                workingStack[workingStack.lastIndex] = a
+            } else if (word == "/") {
+                val a =
+                    workingStack[workingStack.lastIndex - 1] / workingStack[workingStack.lastIndex]
                 workingStack.removeAt(workingStack.lastIndex)
-                workingStack[workingStack.lastIndex]=a
-            } else if(word=="-"){
-                val a = workingStack[workingStack.lastIndex-1]-workingStack[workingStack.lastIndex]
+                workingStack[workingStack.lastIndex] = a
+            } else if (word == "-") {
+                val a =
+                    workingStack[workingStack.lastIndex - 1] - workingStack[workingStack.lastIndex]
                 workingStack.removeAt(workingStack.lastIndex)
-                workingStack[workingStack.lastIndex]=a
-            } else if(word=="~"){
+                workingStack[workingStack.lastIndex] = a
+            } else if (word == "~") {
                 val a = -workingStack[workingStack.lastIndex]
-                workingStack[workingStack.lastIndex]=a
+                workingStack[workingStack.lastIndex] = a
             }
         }
         return workingStack.last()
+
     }
 
     private fun init(){
