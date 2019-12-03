@@ -1,14 +1,14 @@
 package ru.skillbranch.calculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var btnOne:Button
@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         tvEquation.text = savedInstanceState?.getString("EQUATION") ?: ""
         tvAnswer.text = savedInstanceState?.getString("ANSWER") ?: "= 0.0"
         inputEquation = mutableListOf("")
+        tvEquation.movementMethod = ScrollingMovementMethod()
     }
 
 
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun addToInput(char:String){
-        tvEquation.text = "${tvEquation.text}$char"
+        tvEquation.append(char)
         when(char){
             "0","1","2","3","4","5","6","7","8","9","." ->
                                                 if(inputEquation.last().matches(Regex("([1-9]|[.])+"))){
