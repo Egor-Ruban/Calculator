@@ -45,8 +45,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
-        tvEquation.text = savedInstanceState?.getString("EQUATION") ?: ""
-        tvAnswer.text = savedInstanceState?.getString("ANSWER") ?: "= 0.0"
         inputEquation = mutableListOf("")
         tvEquation.movementMethod = ScrollingMovementMethod()
     }
@@ -169,12 +167,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         return workingStack.last()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle?) {
-        super.onSaveInstanceState(outState)
-        outState?.putString("EQUATION", tvEquation.text.toString())
-        outState?.putString("ANSWER", tvAnswer.text.toString())
     }
 
     private fun init(){
