@@ -208,8 +208,9 @@
                 style="@style/Numpad.Operation"/>
         </LinearLayout>
         <View
+            android:onClick="onEggClick"
             android:layout_height="match_parent"
-            android:layout_width="32dp"
+            android:layout_width="24dp"
             android:background="@color/color_accent">
         </View>
     </LinearLayout>

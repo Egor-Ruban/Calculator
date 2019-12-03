@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -195,6 +196,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnResult = btn_result
         btnDot = btn_number_dot
 
+
         btnOne.setOnClickListener(this)
         btnTwo.setOnClickListener(this)
         btnThree.setOnClickListener(this)
@@ -215,5 +217,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnBracketFirst.setOnClickListener(this)
         btnBracketSecond.setOnClickListener(this)
         btnDeleteChar.setOnClickListener(this)
+    }
+
+    fun onEggClick(v:View){
+        Toast.makeText(this,"there is nothing interesting",Toast.LENGTH_SHORT).show()
     }
 }
