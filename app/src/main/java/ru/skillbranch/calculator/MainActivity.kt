@@ -2,6 +2,7 @@ package ru.skillbranch.calculator
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -43,7 +44,8 @@ class MainActivity : AppCompatActivity(){
         }
         btnResult.setOnClickListener {
             if (inputEquation.last() != "") {
-                tvAnswer.text = "= ${translateToRPN()}"
+                val resultOfEquation = translateToRPN()
+                tvAnswer.text = getString(R.string.result, resultOfEquation.toString())
                 tvEquation.hint = tvEquation.text
                 tvEquation.text = ""
                 inputEquation = mutableListOf("")
@@ -53,7 +55,6 @@ class MainActivity : AppCompatActivity(){
             Toast.makeText(this, getString(R.string.egg), Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun addToInput(char: String) {
         tvEquation.append(char)
@@ -72,7 +73,6 @@ class MainActivity : AppCompatActivity(){
             btnBracketStart.text.toString() -> inputEquation.add("(")
             btnBracketEnd.text.toString() -> inputEquation.add(")")
         }
-
     }
 
     private fun translateToRPN(): Double {
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity(){
         val equationInRPN = mutableListOf<String>()
         for (word in inputEquation) {
             if (word == "") {
-                //just do nothing
+                //just do nothing, that`s ok
             } else if (word.matches(Regex("([1-9]|[.])+"))) {
                 equationInRPN.add(word)
             } else if (word == "~") {
