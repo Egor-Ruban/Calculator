@@ -2,7 +2,6 @@ package ru.skillbranch.calculator
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +9,7 @@ import androidx.core.view.children
 import kotlinx.android.synthetic.main.constraint.*
 
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
     private lateinit var inputEquation: MutableList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +20,8 @@ class MainActivity : AppCompatActivity(){
         tvEquation.movementMethod = ScrollingMovementMethod()
     }
 
-    private fun setOnClickListeners(){
-        for(view in constraintLayout.children){
+    private fun setOnClickListeners() {
+        for (view in constraintLayout.children) {
             view.setOnClickListener {
                 addToInput((view as Button).text.toString())
             }
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity(){
             inputEquation = mutableListOf("")
             tvEquation.hint = ""
         }
-        btnDeleteChar.setOnClickListener{
+        btnDeleteChar.setOnClickListener {
             if (inputEquation.last() != "") {
                 tvEquation.text = tvEquation.text.dropLast(1)
                 val str = inputEquation[inputEquation.lastIndex]
@@ -79,30 +78,32 @@ class MainActivity : AppCompatActivity(){
         val operationStack = mutableListOf<String>()
         val equationInRPN = mutableListOf<String>()
         for (word in inputEquation) {
-            if (word == "") {
-                //just do nothing, that`s ok
-            } else if (word.matches(Regex("([1-9]|[.])+"))) {
+            if (word.matches(Regex("([1-9]|[.])+"))) {
                 equationInRPN.add(word)
-            } else if (word == "~") {
-                operationStack.add(word)
-            } else if (word == "(") {
-                operationStack.add(word)
-            } else if (word == ")") {
-                var operation = operationStack.last()
-                while (operation != "(") {
-                    equationInRPN.add(operation)
-                    operationStack.removeAt(operationStack.lastIndex)
-                    operation = operationStack.last()
-                }
-                operationStack.removeAt(operationStack.lastIndex)
             } else {
-                var operation = operationStack.lastOrNull() ?: " "
-                while (operation[0] > word[0] && operation != " ") {
-                    equationInRPN.add(operation)
-                    operationStack.removeAt(operationStack.lastIndex)
-                    operation = operationStack.lastOrNull() ?: " "
+                when (word) {
+                    "" -> {} //just do nothing, that`s ok
+                    "~" -> operationStack.add(word)
+                    "(" -> operationStack.add(word)
+                    ")" -> {
+                        var operation = operationStack.last()
+                        while (operation != "(") {
+                            equationInRPN.add(operation)
+                            operationStack.removeAt(operationStack.lastIndex)
+                            operation = operationStack.last()
+                        }
+                        operationStack.removeAt(operationStack.lastIndex)
+                    }
+                    else -> {
+                        var operation = operationStack.lastOrNull() ?: " "
+                        while (operation[0] > word[0] && operation != " ") {
+                            equationInRPN.add(operation)
+                            operationStack.removeAt(operationStack.lastIndex)
+                            operation = operationStack.lastOrNull() ?: " "
+                        }
+                        operationStack.add(word)
+                    }
                 }
-                operationStack.add(word)
             }
         }
         operationStack.reverse()
@@ -117,29 +118,37 @@ class MainActivity : AppCompatActivity(){
         for (word in input) {
             if (word.matches(Regex("([1-9]|[.])+"))) {
                 workingStack.add(word.toDouble())
-            } else if (word == "+") {
-                val a =
-                    workingStack[workingStack.lastIndex - 1] + workingStack[workingStack.lastIndex]
-                workingStack.removeAt(workingStack.lastIndex)
-                workingStack[workingStack.lastIndex] = a
-            } else if (word == "@") {
-                val a =
-                    workingStack[workingStack.lastIndex - 1] * workingStack[workingStack.lastIndex]
-                workingStack.removeAt(workingStack.lastIndex)
-                workingStack[workingStack.lastIndex] = a
-            } else if (word == "/") {
-                val a =
-                    workingStack[workingStack.lastIndex - 1] / workingStack[workingStack.lastIndex]
-                workingStack.removeAt(workingStack.lastIndex)
-                workingStack[workingStack.lastIndex] = a
-            } else if (word == "-") {
-                val a =
-                    workingStack[workingStack.lastIndex - 1] - workingStack[workingStack.lastIndex]
-                workingStack.removeAt(workingStack.lastIndex)
-                workingStack[workingStack.lastIndex] = a
-            } else if (word == "~") {
-                val a = -workingStack[workingStack.lastIndex]
-                workingStack[workingStack.lastIndex] = a
+            } else {
+                when(word) {
+                    "+" -> {
+                        val a =
+                            workingStack[workingStack.lastIndex - 1] + workingStack[workingStack.lastIndex]
+                        workingStack.removeAt(workingStack.lastIndex)
+                        workingStack[workingStack.lastIndex] = a
+                    }
+                    "@" -> {
+                        val a =
+                            workingStack[workingStack.lastIndex - 1] * workingStack[workingStack.lastIndex]
+                        workingStack.removeAt(workingStack.lastIndex)
+                        workingStack[workingStack.lastIndex] = a
+                    }
+                    "/" -> {
+                        val a =
+                            workingStack[workingStack.lastIndex - 1] / workingStack[workingStack.lastIndex]
+                        workingStack.removeAt(workingStack.lastIndex)
+                        workingStack[workingStack.lastIndex] = a
+                    }
+                    "-" -> {
+                        val a =
+                            workingStack[workingStack.lastIndex - 1] - workingStack[workingStack.lastIndex]
+                        workingStack.removeAt(workingStack.lastIndex)
+                        workingStack[workingStack.lastIndex] = a
+                    }
+                    "~" -> {
+                        val a = -workingStack[workingStack.lastIndex]
+                        workingStack[workingStack.lastIndex] = a
+                    }
+                }
             }
         }
         return workingStack.last()
