@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
@@ -21,9 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setOnClickListeners() {
         var inputEquation = mutableListOf("")
-        for (view in constraintLayout.children) {
+        for (view in layout_buttons.children) {
             view.setOnClickListener {
-                addToInput(inputEquation, (view as Button).text.toString())
+                addToInput(inputEquation, (view as TextView).text.toString())
             }
         }
 

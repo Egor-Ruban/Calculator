@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
@@ -33,15 +33,15 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="Numpad.Numbers">
-        <item name="android:textSize">50sp</item>
-        <item name="android:textColor">@color/color_gray_light</item>
+    <style name="Numpad.WhiteButtons">
+        <item name="android:textSize">29sp</item>
+        <item name="android:textColor">@color/color_accent</item>
         <item name="android:background">@drawable/number_button</item>
     </style>
 
-    <style name="Numpad.Operation">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/color_gray_light</item>
+    <style name="Numpad.BlueButtons">
+        <item name="android:textSize">29sp</item>
+        <item name="android:textColor">@color/color_primary</item>
         <item name="android:background">@drawable/operation_button</item>
     </style>
 </resources>
