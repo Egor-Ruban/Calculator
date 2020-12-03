@@ -33,6 +33,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textSize="40sp"
+        android:gravity="end"
         android:background="@drawable/result_background"
         android:fontFamily="@font/digital_numbers"
         android:textColor="@color/text"
@@ -41,6 +42,40 @@
         app:layout_constraintHorizontal_bias="0.603"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEquation" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="40sp"
+        android:gravity="end"
+        android:text="888888888.00"
+        android:fontFamily="@font/digital_numbers"
+        android:textColor="@color/text_transparent"
+        app:fontFamily = "@font/digital_numbers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.603"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEquation" />
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="40sp"
+        android:gravity="start"
+        android:text="="
+        android:fontFamily="@font/digital_numbers"
+        android:textColor="@color/text"
+        app:fontFamily = "@font/digital_numbers"
+        app:layout_constraintHorizontal_bias="0.603"
+        app:layout_constraintStart_toStartOf="@id/tvAnswer"
+        app:layout_constraintTop_toBottomOf="@+id/tvEquation" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_buttons"
@@ -160,7 +195,7 @@
             android:layout_height="0dp"
             android:background="@drawable/button_white"
             style="@style/Numpad.WhiteButtons"
-            android:src="@drawable/ic_backspace_24dp"
+            android:text="@string/delete_char"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnResult"
             app:layout_constraintStart_toStartOf="@+id/btnNumberNine"

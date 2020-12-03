@@ -7,6 +7,7 @@
     <color name="color_accent_night">#2196F3</color>
     <color name="color_accent_secondary">#BEAC32EE</color>
     <color name="text">#373A37</color>
+    <color name="text_transparent">#373A3715</color>
     <color name="color_gray">#9CA9BA</color>
     <color name="color_gray_dark">#675F7F</color>
     <color name="color_gray_light">#ECECEC</color>

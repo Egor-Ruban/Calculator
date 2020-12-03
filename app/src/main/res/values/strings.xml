@@ -19,6 +19,7 @@
     <string name="operation_sub"> - </string>
     <string name="operator_open_bracket"> ( </string>
     <string name="operator_close_bracket"> ) </string>
-    <string name="result">= %.2f</string>
+    <string name="result">%.2f</string>
+    <string name="delete_char">C</string>
 
 </resources>

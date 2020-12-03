@@ -49,10 +49,14 @@ class MainActivity : AppCompatActivity() {
         btnResult.setOnClickListener {
             if (inputEquation.last() != "") {
                 val resultOfEquation = Calc.calculate(inputEquation)
-                tvAnswer.text = getString(R.string.result, resultOfEquation)
-                tvEquation.hint = tvEquation.text
-                tvEquation.text = ""
-                inputEquation = mutableListOf("")
+                if(resultOfEquation > 999999999.99){
+                    tvAnswer.text = "too much"
+                } else {
+                    tvAnswer.text = getString(R.string.result, resultOfEquation)
+                }
+                    tvEquation.hint = tvEquation.text
+                    tvEquation.text = ""
+                    inputEquation = mutableListOf("")
             }
         }
     }

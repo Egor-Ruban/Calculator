@@ -29,7 +29,7 @@
 
     <style name="Numpad">
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="Numpad.WhiteButtons">
