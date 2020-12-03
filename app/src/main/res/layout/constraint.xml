@@ -8,44 +8,70 @@
     android:background="@color/color_primary"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvEquation"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
+    <ru.tsu.calculator.stayAway.AspectRatioImageView
+        android:id="@+id/tvEquationBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/input_background"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:aspectRatio="2.36"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvEquation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:textColor="@color/text"
         android:textSize="30sp"
         android:fontFamily="@font/digital_numbers"
         app:fontFamily = "@font/digital_numbers"
-        android:background="@drawable/input_background"
+        app:layout_constraintEnd_toEndOf="@id/tvEquationBack"
+        app:layout_constraintStart_toStartOf="@id/tvEquationBack"
+        app:layout_constraintTop_toTopOf="@id/tvEquationBack"
+        app:layout_constraintBottom_toBottomOf="@id/tvEquationBack"/>
+
+    <ru.tsu.calculator.stayAway.AspectRatioImageView
+        android:id="@+id/tvAnswerBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/result_background"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:aspectRatio="6.0"
+        app:layout_constraintTop_toBottomOf="@id/tvEquationBack"/>
 
     <TextView
         android:id="@+id/tvAnswer"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textSize="40sp"
         android:gravity="end"
-        android:background="@drawable/result_background"
         android:fontFamily="@font/digital_numbers"
         android:textColor="@color/text"
         app:fontFamily = "@font/digital_numbers"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.603"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEquation" />
+        app:layout_constraintEnd_toEndOf="@id/tvAnswerBack"
+        app:layout_constraintStart_toStartOf="@id/sign"
+        app:layout_constraintTop_toTopOf="@+id/tvAnswerBack"
+        app:layout_constraintBottom_toBottomOf="@id/tvAnswerBack"
+        />
 
     <TextView
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -55,15 +81,15 @@
         android:fontFamily="@font/digital_numbers"
         android:textColor="@color/text_transparent"
         app:fontFamily = "@font/digital_numbers"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.603"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEquation" />
+        app:layout_constraintEnd_toEndOf="@id/tvAnswerBack"
+        app:layout_constraintStart_toStartOf="@id/sign"
+        app:layout_constraintTop_toTopOf="@+id/tvAnswerBack"
+        app:layout_constraintBottom_toBottomOf="@id/tvAnswerBack"/>
 
     <TextView
+        android:id="@+id/sign"
         android:layout_width="40dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="00dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textSize="40sp"
@@ -72,9 +98,9 @@
         android:fontFamily="@font/digital_numbers"
         android:textColor="@color/text"
         app:fontFamily = "@font/digital_numbers"
-        app:layout_constraintHorizontal_bias="0.603"
-        app:layout_constraintStart_toStartOf="@id/tvAnswer"
-        app:layout_constraintTop_toBottomOf="@+id/tvEquation" />
+        app:layout_constraintStart_toStartOf="@id/tvAnswerBack"
+        app:layout_constraintTop_toTopOf="@+id/tvAnswerBack"
+        app:layout_constraintBottom_toBottomOf="@id/tvAnswerBack" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
