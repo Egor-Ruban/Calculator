@@ -20,6 +20,6 @@
     <string name="operator_open_bracket"> ( </string>
     <string name="operator_close_bracket"> ) </string>
     <string name="egg">there is nothing interesting</string>\
-    <string name="result">= %1$s</string>
+    <string name="result">= %.2f</string>
 
 </resources>
